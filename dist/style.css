@@ -25,4 +25,15 @@ body {
   border: 1px solid black;
   border-radius: 5px;
   text-align: center;
+  background-color: rgba(237, 237, 237, 1);
+}
+
+.main-content-container {
+  margin-top: 200px;
+  height: 80vh;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
 }
