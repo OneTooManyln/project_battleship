@@ -37,3 +37,32 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 200px;
+  height: 60vh;
+  width: 100vw;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 325px;
+  width: 325px;
+  gap: 3px;
+}
+
+.board-column {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 3px;
+}
+
+.grid {
+  border: 1px solid #393b44;
+  background-color: rgba(237, 237, 237, 1);
+}
