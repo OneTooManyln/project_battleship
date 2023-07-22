@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=document.querySelectorAll(".board");(()=>{const t=[];(()=>{for(let e=0;e<10;e++)t.push("")})(),e.forEach((e=>{t.forEach((()=>{const t=document.createElement("div");t.classList.add("board-column"),e.appendChild(t);for(let e=0;e<10;e++){const e=document.createElement("div");e.classList.add("grid"),t.appendChild(e)}}))}))})()})();
