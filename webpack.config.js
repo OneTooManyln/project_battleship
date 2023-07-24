@@ -7,7 +7,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
   },
-  module: {
+  /*   module: {
     rules: [
       {
         test: /\.jsx?$/,
@@ -40,5 +40,5 @@ module.exports = {
       "shared",
       "/shared/vendor/modules",
     ],
-  },
+  }, */
 };
