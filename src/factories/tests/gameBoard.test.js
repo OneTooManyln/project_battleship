@@ -39,4 +39,10 @@ describe("Gameboard", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]);
   });
+
+  test("recieves attack", () => {
+    gameBoard.placeShip(2, 2, 5, "vertical");
+    gameBoard.recieveAttack(2, 2);
+    expect(gameBoard.recieveAttack(2, 2)).toEqual(true);
+  });
 });
