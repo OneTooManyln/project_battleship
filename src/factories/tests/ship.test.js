@@ -6,7 +6,21 @@ describe("ship", () => {
     ship = new Ship(1, 5);
   });
 
-  test("Create new ship", () => {
+  test("creates new ship", () => {
     expect(ship).toEqual({ hits: 0, id: 1, length: 5, status: false });
+  });
+
+  test("takes hit", () => {
+    ship.hit();
+    expect(ship.hits).toEqual(1);
+  });
+
+  test("sinks", () => {
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    expect(ship.status).toEqual(false);
   });
 });
