@@ -15,4 +15,13 @@ export default class gameBoard {
     }
     return this.board;
   }
+
+  recieveAttack(x, y) {
+    let hitStatus = false;
+
+    if (this.board[x][y] === 1) {
+      hitStatus = true;
+    }
+    return hitStatus;
+  }
 }
