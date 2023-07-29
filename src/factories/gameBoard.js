@@ -13,9 +13,9 @@ export default class gameBoard {
 
     for (let i = 0; i < length; i++) {
       if (direction === "vertical") {
-        this.board[x + i][y] = 1;
+        this.board[x + i][y] = newShip;
       } else {
-        this.board[x][y + i] = 1;
+        this.board[x][y + i] = newShip;
       }
     }
     this.ships.push(newShip);
