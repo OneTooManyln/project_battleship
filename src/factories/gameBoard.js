@@ -23,7 +23,9 @@ export default class gameBoard {
   }
 
   recieveAttack(x, y) {
-    if (this.board[x][y] === 1) {
+    const cell = this.board[x][y];
+    if (cell instanceof ship) {
+      cell.hit();
       return true;
     }
     return false;
