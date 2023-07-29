@@ -9,7 +9,7 @@ export default class gameBoard {
   }
 
   placeShip(x, y, length, direction) {
-    const newShip = new ship(Date.now().toString(), length);
+    const newShip = new ship(`ship_${x}_${y}`, length);
 
     for (let i = 0; i < length; i++) {
       if (direction === "vertical") {
