@@ -17,11 +17,9 @@ export default class gameBoard {
   }
 
   recieveAttack(x, y) {
-    let hitStatus = false;
-
     if (this.board[x][y] === 1) {
-      hitStatus = true;
+      return true;
     }
-    return hitStatus;
+    return false;
   }
 }
