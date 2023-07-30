@@ -27,7 +27,7 @@ export default class gameBoard {
     if (cell instanceof ship) {
       cell.hit();
       return true;
-    }
+    } else this.board[x][y] = 1;
     return false;
   }
 }
