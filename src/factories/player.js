@@ -5,5 +5,6 @@ export default class player {
 
   attackShip(x, y, gameBoard) {
     gameBoard.recieveAttack(x, y);
+    return gameBoard.board;
   }
 }
