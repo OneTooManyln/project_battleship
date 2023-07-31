@@ -9,6 +9,16 @@ export default class gameBoard {
   }
 
   placeShip(x, y, length, direction) {
+    if (direction === "vertical") {
+      if (x + length > this.board.length) {
+        return false;
+      } else {
+        if (y + length > this.board[0].length) {
+          return false;
+        }
+      }
+    }
+
     const newShip = new ship(`ship_${x}_${y}`, length);
 
     for (let i = 0; i < length; i++) {
