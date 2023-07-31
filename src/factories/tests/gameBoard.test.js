@@ -125,6 +125,11 @@ describe("Gameboard", () => {
     expect(gameBoard.placeShip(6, 2, 5, "vertical")).toEqual(false);
   });
 
+  test("doesn't place ship in taken cell", () => {
+    gameBoard.placeShip(2, 2, 5, "vertical");
+    expect(gameBoard.placeShip(2, 2, 5, "vertical")).toEqual(false);
+  });
+
   test("recieves attack", () => {
     gameBoard.placeShip(2, 2, 5, "vertical");
     expect(gameBoard.recieveAttack(2, 2)).toEqual(true);
