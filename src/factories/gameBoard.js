@@ -8,6 +8,10 @@ export default class gameBoard {
     this.ships = [];
   }
 
+  isCellEmpty(x, y) {
+    return this.board[x][y] === 0;
+  }
+
   placeShip(x, y, length, direction) {
     if (direction === "vertical") {
       if (x + length > this.board.length) {
@@ -15,6 +19,19 @@ export default class gameBoard {
       } else {
         if (y + length > this.board[0].length) {
           return false;
+        }
+      }
+    }
+
+    for (let i = 0; i < length; i++) {
+      if (direction === "vertical") {
+        if (!this.isCellEmpty(x + i, y)) {
+          console.log("space taken");
+          return false;
+        } else {
+          if (!this.isCellEmpty(x, y + i)) {
+            return false;
+          }
         }
       }
     }
