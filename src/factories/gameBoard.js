@@ -26,7 +26,6 @@ export default class gameBoard {
     for (let i = 0; i < length; i++) {
       if (direction === "vertical") {
         if (!this.isCellEmpty(x + i, y)) {
-          console.log("space taken");
           return false;
         } else {
           if (!this.isCellEmpty(x, y + i)) {
