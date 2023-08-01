@@ -1,5 +1,6 @@
 import GameBoard from "../gameBoard";
 import Player from "../player";
+import Ship from "../ship";
 
 describe("Player", () => {
   let enemyGameBoard;
@@ -108,5 +109,25 @@ describe("Player", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]);
+  });
+
+  test("attacks randomly", () => {
+    enemyGameBoard.placeShip(2, 2, 5, "vertical");
+
+    try {
+      const enemyBoard = player.attackRandomly(enemyGameBoard);
+      const randomAttack = new Set(
+        enemyBoard.flat().filter((cell) => cell === 1),
+      );
+      expect(randomAttack.has(1)).toEqual(true);
+    } catch (error) {
+      const enemyBoard = player.attackRandomly(enemyGameBoard);
+      const randomAttack = new Set(
+        enemyBoard
+          .flat()
+          .filter((cell) => cell instanceof Ship && cell.hits === 1),
+      );
+      expect(randomAttack.size).toEqual(1);
+    }
   });
 });
