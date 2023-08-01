@@ -1,4 +1,5 @@
 import GameBoard from "../gameBoard";
+import Ship from "../ship";
 
 describe("Gameboard", () => {
   let gameBoard;
@@ -119,6 +120,14 @@ describe("Gameboard", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]);
+  });
+
+  test("places ships randomly", () => {
+    const boardArray = gameBoard.placeShipRandomly();
+    const ships = new Set(
+      boardArray.flat().filter((cell) => cell instanceof Ship),
+    );
+    expect(ships.size).toEqual(5);
   });
 
   test("doesn't place ship out of bounds", () => {
