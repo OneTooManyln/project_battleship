@@ -48,6 +48,27 @@ export default class gameBoard {
     return this.board;
   }
 
+  placeShipRandomly() {
+    const shipLengths = [5, 4, 3, 3, 2];
+
+    for (let i = 0; i < shipLengths.length; i++) {
+      let isShipPlaced = false;
+
+      while (!isShipPlaced) {
+        let xPlacement = Math.floor(Math.random() * 10);
+        let yPlacement = Math.floor(Math.random() * 10);
+
+        isShipPlaced = this.placeShip(
+          xPlacement,
+          yPlacement,
+          shipLengths[i],
+          "vertical",
+        );
+      }
+    }
+    return this.board;
+  }
+
   recieveAttack(x, y) {
     const cell = this.board[x][y];
     if (cell instanceof ship) {
