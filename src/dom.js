@@ -1,7 +1,7 @@
 const boardElementOne = document.querySelector("#board-1");
 const boardElementTwo = document.querySelector("#board-2");
 
-export const createGameBoardGrid = (boardOne, boardTwo) => {
+const createGameBoardGrid = (boardOne, boardTwo) => {
   const boards = [
     { board: boardOne, element: boardElementOne },
     { board: boardTwo, element: boardElementTwo },
@@ -30,3 +30,5 @@ export const createGameBoardGrid = (boardOne, boardTwo) => {
     });
   });
 };
+
+export default createGameBoardGrid;
