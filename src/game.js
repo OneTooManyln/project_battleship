@@ -1,7 +1,7 @@
 import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
 
-export const game = (() => {
+const game = (() => {
   const playerOne = new Player("Player 1");
   const playerTwo = new Player("Computer");
 
@@ -11,3 +11,5 @@ export const game = (() => {
   playerOneBoard.placeShipRandomly();
   playerTwoBoard.placeShipRandomly();
 })();
+
+export default game;
