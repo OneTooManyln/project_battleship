@@ -1,19 +1,27 @@
-const boards = document.querySelectorAll(".board");
+const boardElementOne = document.querySelector("#board-1");
+const boardElementTwo = document.querySelector("#board-2");
 
-export const createGameBoardGrid = () => {
-  const columns = [];
+export const createGameBoardGrid = (boardOne, boardTwo) => {
+  const boards = [
+    { board: boardOne, element: boardElementOne },
+    { board: boardTwo, element: boardElementTwo },
+  ];
 
-  const populateColumns = (() => {
-    for (let i = 0; i < 10; i++) {
-      columns.push("");
+  boards.forEach(({ board, element }) => {
+    const columns = [];
+
+    for (let j = 0; j < board[0].length; j++) {
+      const column = [];
+      for (let i = 0; i < board.length; i++) {
+        column.push(board[i][j]);
+      }
+      columns.push(column);
     }
-  })();
 
-  boards.forEach((board) => {
     columns.forEach(() => {
       const boardColumn = document.createElement("div");
       boardColumn.classList.add("board-column");
-      board.appendChild(boardColumn);
+      element.appendChild(boardColumn);
       for (let i = 0; i < 10; i++) {
         const grid = document.createElement("div");
         grid.classList.add("grid");
