@@ -1,3 +1,3 @@
-import createGameBoardGrid from "./dom";
+import game from "./game";
 
-createGameBoardGrid();
+game();
