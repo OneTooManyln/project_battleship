@@ -1,3 +1,4 @@
+import createGameBoardGrid from "./dom";
 import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
 
@@ -10,6 +11,8 @@ const game = (() => {
 
   playerOneBoard.placeShipRandomly();
   playerTwoBoard.placeShipRandomly();
+
+  createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
 })();
 
 export default game;
