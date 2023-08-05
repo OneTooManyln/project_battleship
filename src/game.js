@@ -2,12 +2,12 @@ import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
 
 export const game = (() => {
-  const player = new Player("Player 1");
-  const computer = new Player("Computer");
+  const playerOne = new Player("Player 1");
+  const playerTwo = new Player("Computer");
 
-  const playerBoard = new GameBoard();
-  const computerBoard = new GameBoard();
+  const playerOneBoard = new GameBoard();
+  const playerTwoBoard = new GameBoard();
 
-  playerBoard.placeShipRandomly();
-  computerBoard.placeShipRandomly();
+  playerOneBoard.placeShipRandomly();
+  playerTwoBoard.placeShipRandomly();
 })();
