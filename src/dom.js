@@ -18,15 +18,18 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
       columns.push(column);
     }
 
-    columns.forEach(() => {
+    columns.forEach((column) => {
       const boardColumn = document.createElement("div");
       boardColumn.classList.add("board-column");
       element.appendChild(boardColumn);
-      for (let i = 0; i < 10; i++) {
+      column.forEach((cell) => {
         const grid = document.createElement("div");
         grid.classList.add("grid");
         boardColumn.appendChild(grid);
-      }
+        if (!Number.isInteger(cell)) {
+          grid.classList.add("ship");
+        }
+      });
     });
   });
 };
