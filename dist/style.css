@@ -66,3 +66,15 @@ body {
   border: 1px solid #393b44;
   background-color: rgba(237, 237, 237, 1);
 }
+
+.hit {
+  background-color: rgb(200, 107, 133);
+}
+
+.missed {
+  background-color: rgb(188, 230, 235);
+}
+
+.ship {
+  background-color: rgb(131, 155, 151);
+}
