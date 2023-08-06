@@ -2,7 +2,7 @@ import createGameBoardGrid from "./dom";
 import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
 
-const game = (() => {
+const game = () => {
   const playerOne = new Player("Player 1");
   const playerTwo = new Player("Computer");
 
@@ -13,6 +13,6 @@ const game = (() => {
   playerTwoBoard.placeShipRandomly();
 
   createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
-})();
+};
 
 export default game;
