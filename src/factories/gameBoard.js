@@ -77,4 +77,8 @@ export default class gameBoard {
     } else this.board[x][y] = 1;
     return false;
   }
+
+  areAllSunk() {
+    return this.ships.every((ship) => ship.isSunk());
+  }
 }
