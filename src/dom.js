@@ -26,7 +26,7 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
         const grid = document.createElement("div");
         grid.classList.add("grid");
         boardColumn.appendChild(grid);
-        if (!Number.isInteger(cell)) {
+        if (!Number.isInteger(cell) && board == boardOne) {
           grid.classList.add("ship");
         }
       });
