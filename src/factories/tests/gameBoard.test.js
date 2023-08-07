@@ -143,4 +143,10 @@ describe("Gameboard", () => {
     gameBoard.placeShip(2, 2, 5, "vertical");
     expect(gameBoard.recieveAttack(2, 2)).toEqual(true);
   });
+
+  test("checks if all ships are sunk", () => {
+    gameBoard.placeShip(2, 2, 5, "vertical");
+    gameBoard.recieveAttack(2, 2);
+    expect(gameBoard.areAllSunk()).toEqual(false);
+  });
 });
