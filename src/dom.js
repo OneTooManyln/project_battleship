@@ -18,13 +18,15 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
       columns.push(column);
     }
 
-    columns.forEach((column) => {
+    columns.forEach((column, x) => {
       const boardColumn = document.createElement("div");
       boardColumn.classList.add("board-column");
       element.appendChild(boardColumn);
-      column.forEach((cell) => {
+      column.forEach((cell, y) => {
         const grid = document.createElement("div");
         grid.classList.add("grid");
+        grid.dataset.y = `${x}`;
+        grid.dataset.x = `${y}`;
         boardColumn.appendChild(grid);
         if (!Number.isInteger(cell) && board == boardOne) {
           grid.classList.add("ship");
