@@ -42,6 +42,10 @@ body {
   margin-top: 200px;
 }
 
+.active {
+  opacity: 0.8 !important;
+}
+
 .active .board-column > *:hover {
   background-color: white;
   cursor: pointer;
@@ -54,6 +58,7 @@ body {
   height: 325px;
   width: 325px;
   gap: 3px;
+  opacity: 0.4;
 }
 
 .board-column {
