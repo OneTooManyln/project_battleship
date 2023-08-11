@@ -38,6 +38,9 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
         if (cell == 1) {
           grid.classList.add("missed");
         }
+        if (cell === "x") {
+          grid.classList.add("hit");
+        }
       });
     });
   });
