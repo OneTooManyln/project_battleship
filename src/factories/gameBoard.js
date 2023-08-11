@@ -73,6 +73,7 @@ export default class gameBoard {
     const cell = this.board[x][y];
     if (cell instanceof ship) {
       cell.hit();
+      this.board[x][y] = "x";
       return true;
     } else this.board[x][y] = 1;
     return false;
