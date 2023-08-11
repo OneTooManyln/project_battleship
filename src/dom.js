@@ -2,6 +2,9 @@ const boardElementOne = document.querySelector("#board-1");
 const boardElementTwo = document.querySelector("#board-2");
 
 const createGameBoardGrid = (boardOne, boardTwo) => {
+  boardElementOne.innerHTML = "";
+  boardElementTwo.innerHTML = "";
+
   const boards = [
     { board: boardOne, element: boardElementOne },
     { board: boardTwo, element: boardElementTwo },
@@ -31,9 +34,14 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
         if (!Number.isInteger(cell) && board == boardOne) {
           grid.classList.add("ship");
         }
+
+        if (cell == 1) {
+          grid.classList.add("missed");
+        }
       });
     });
   });
+  console.log(boardOne, boardTwo);
 };
 
 export default createGameBoardGrid;
