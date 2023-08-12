@@ -11,6 +11,11 @@ export default class ship {
   }
 
   isSunk() {
-    return this.hits >= this.length;
+    let status = this.hits >= this.length;
+    if (status === true) {
+      this.status = true;
+    }
+
+    return status;
   }
 }
