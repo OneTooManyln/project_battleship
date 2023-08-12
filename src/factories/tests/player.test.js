@@ -20,23 +20,7 @@ describe("Player", () => {
     expect(player.attackShip(2, 2, enemyGameBoard)).toEqual([
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [
-        0,
-        0,
-        {
-          hits: 1,
-          id: "ship_2_2",
-          length: 5,
-          status: false,
-        },
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-      ],
+      [0, 0, "x", 0, 0, 0, 0, 0, 0, 0],
       [
         0,
         0,
