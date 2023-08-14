@@ -73,7 +73,8 @@ export default class gameBoard {
     const cell = this.board[x][y];
     if (cell instanceof ship) {
       cell.hit();
-      this.board[x][y] = "x";
+      this.board[x][y] = [{ ...this.board[x][y] }, { hitMarker: "x" }];
+      cell.isSunk();
       return true;
     } else this.board[x][y] = 1;
     return false;
