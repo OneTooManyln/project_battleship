@@ -33,7 +33,6 @@ const game = () => {
       if (iter === 0) {
         yCoord = coordinates[attr];
         iter++;
-        console.log(coordinates[attr[0]]);
       } else if (iter === 1) {
         xCoord = coordinates[attr];
         iter++;
@@ -43,9 +42,21 @@ const game = () => {
   };
 
   const handleCellClick = (x, y) => {
-    console.log(x, y);
     currentPlayer.attackShip(x, y, currentGameBoard);
+    updateSunkShips();
     createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
+  };
+
+  const updateSunkShips = () => {
+    let sunkShip = currentGameBoard.ships.find((ship) => ship.status === true);
+    if (!sunkShip) return false;
+    currentGameBoard.board.forEach((row) => {
+      row.forEach((cell) => {
+        if (cell[0] && cell[0].id === sunkShip.id) {
+          cell[0].status = true;
+        }
+      });
+    });
   };
 };
 

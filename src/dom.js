@@ -38,8 +38,11 @@ const createGameBoardGrid = (boardOne, boardTwo) => {
         if (cell == 1) {
           grid.classList.add("missed");
         }
-        if (cell === "x") {
+        if (cell[1] && cell[1].hitMarker === "x") {
           grid.classList.add("hit");
+          if (cell[0].status === true) {
+            grid.classList.add("sunk");
+          }
         }
       });
     });
