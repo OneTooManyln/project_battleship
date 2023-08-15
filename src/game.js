@@ -43,20 +43,8 @@ const game = () => {
 
   const handleCellClick = (x, y) => {
     currentPlayer.attackShip(x, y, currentGameBoard);
-    updateSunkShips();
+    currentGameBoard.updateBoardsShips();
     createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
-  };
-
-  const updateSunkShips = () => {
-    let sunkShip = currentGameBoard.ships.find((ship) => ship.status === true);
-    if (!sunkShip) return false;
-    currentGameBoard.board.forEach((row) => {
-      row.forEach((cell) => {
-        if (cell[0] && cell[0].id === sunkShip.id) {
-          cell[0].status = true;
-        }
-      });
-    });
   };
 };
 

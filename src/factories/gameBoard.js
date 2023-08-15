@@ -83,4 +83,17 @@ export default class gameBoard {
   areAllSunk() {
     return this.ships.every((ship) => ship.isSunk());
   }
+
+  updateBoardsShips() {
+    let sunkShips = this.ships.filter((ship) => ship.status === true);
+    if (!sunkShips.length) return false;
+
+    this.board.forEach((row) => {
+      row.forEach((cell) => {
+        if (sunkShips.some((ship) => cell[0] && cell[0].id === ship.id)) {
+          cell[0].status = true;
+        }
+      });
+    });
+  }
 }
