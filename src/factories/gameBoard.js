@@ -57,12 +57,13 @@ export default class gameBoard {
       while (!isShipPlaced) {
         let xPlacement = Math.floor(Math.random() * 10);
         let yPlacement = Math.floor(Math.random() * 10);
+        let direction = Math.random() < 0.5 ? "vertical" : "horizontal";
 
         isShipPlaced = this.placeShip(
           xPlacement,
           yPlacement,
           shipLengths[i],
-          "vertical",
+          direction,
         );
       }
     }
