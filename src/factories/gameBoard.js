@@ -16,10 +16,10 @@ export default class gameBoard {
     if (direction === "vertical") {
       if (x + length > this.board.length) {
         return false;
-      } else {
-        if (y + length > this.board[0].length) {
-          return false;
-        }
+      }
+    } else if (direction === "horizontal") {
+      if (y + length > this.board[0].length) {
+        return false;
       }
     }
 
@@ -27,10 +27,10 @@ export default class gameBoard {
       if (direction === "vertical") {
         if (!this.isCellEmpty(x + i, y)) {
           return false;
-        } else {
-          if (!this.isCellEmpty(x, y + i)) {
-            return false;
-          }
+        }
+      } else if (direction === "horizontal") {
+        if (!this.isCellEmpty(x, y + i)) {
+          return false;
         }
       }
     }
