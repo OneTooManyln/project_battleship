@@ -12,12 +12,16 @@ const game = () => {
   playerOneBoard.placeShipRandomly();
   playerTwoBoard.placeShipRandomly();
 
-  createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
-
   let currentPlayer = playerOne;
   let currentGameBoard = playerTwoBoard;
+  let isGameOver = false;
 
-  // listen for cell click
+  createGameBoardGrid(
+    playerOneBoard.board,
+    playerTwoBoard.board,
+    currentGameBoard.board,
+  );
+
   document.addEventListener("click", (e) => {
     if (e.target.closest(".grid")) {
       getCoordinates(e.target.dataset);
@@ -44,7 +48,19 @@ const game = () => {
   const handleCellClick = (x, y) => {
     currentPlayer.attackShip(x, y, currentGameBoard);
     currentGameBoard.updateBoardsShips();
-    createGameBoardGrid(playerOneBoard.board, playerTwoBoard.board);
+
+    if (playerOneBoard.areAllSunk() || playerTwoBoard.areAllSunk()) {
+      isGameOver = true;
+    } else {
+      currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+      currentGameBoard =
+        currentGameBoard === playerOneBoard ? playerTwoBoard : playerOneBoard;
+    }
+    createGameBoardGrid(
+      playerOneBoard.board,
+      playerTwoBoard.board,
+      currentGameBoard.board,
+    );
   };
 };
 

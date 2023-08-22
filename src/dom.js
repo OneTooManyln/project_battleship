@@ -1,7 +1,10 @@
 const boardElementOne = document.querySelector("#board-1");
 const boardElementTwo = document.querySelector("#board-2");
 
-const createGameBoardGrid = (boardOne, boardTwo) => {
+const createGameBoardGrid = (boardOne, boardTwo, currentBoard) => {
+  boardElementOne.classList.toggle("active", currentBoard === boardOne);
+  boardElementTwo.classList.toggle("active", currentBoard === boardTwo);
+
   boardElementOne.innerHTML = "";
   boardElementTwo.innerHTML = "";
 
