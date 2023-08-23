@@ -24,7 +24,18 @@ const game = () => {
 
   document.addEventListener("click", (e) => {
     if (e.target.closest(".grid")) {
-      getCoordinates(e.target.dataset);
+      const clickedBoard = e.target.closest(".board").id;
+      console.log(clickedBoard);
+
+      if (
+        (currentPlayer === playerOne && clickedBoard === "board-2") |
+        (currentPlayer === playerTwo && clickedBoard === "board-1")
+      ) {
+        getCoordinates(e.target.dataset);
+      } else {
+        console.log("error");
+        return;
+      }
     }
   });
 
