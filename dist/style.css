@@ -73,7 +73,7 @@ body {
 }
 
 .hit {
-  background-color: rgb(200, 107, 133);
+  background-color: rgb(200, 107, 133) !important;
 }
 
 .missed {
@@ -85,5 +85,5 @@ body {
 }
 
 .sunk {
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(187, 187, 187) !important;
 }
