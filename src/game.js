@@ -22,19 +22,23 @@ const game = () => {
     currentGameBoard.board,
   );
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", async (e) => {
     if (e.target.closest(".grid")) {
       const clickedBoard = e.target.closest(".board").id;
       console.log(clickedBoard);
 
-      if (
-        (currentPlayer === playerOne && clickedBoard === "board-2") |
-        (currentPlayer === playerTwo && clickedBoard === "board-1")
-      ) {
+      if (currentPlayer === playerOne && clickedBoard === "board-2") {
         getCoordinates(e.target.dataset);
       } else {
         console.log("error");
         return;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      if (currentPlayer === playerTwo) {
+        console.log("computers turn");
+        currentPlayer.attackRandomly(currentGameBoard);
+        updateGame();
       }
     }
   });
@@ -59,9 +63,13 @@ const game = () => {
   const handleCellClick = (x, y) => {
     currentPlayer.attackShip(x, y, currentGameBoard);
     currentGameBoard.updateBoardsShips();
+    updateGame();
+  };
 
+  const updateGame = () => {
     if (playerOneBoard.areAllSunk() || playerTwoBoard.areAllSunk()) {
       isGameOver = true;
+      console.log(isGameOver);
     } else {
       currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
       currentGameBoard =
