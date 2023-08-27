@@ -1,9 +1,11 @@
 const boardElementOne = document.querySelector("#board-1");
 const boardElementTwo = document.querySelector("#board-2");
 
-const createGameBoardGrid = (boardOne, boardTwo, currentBoard) => {
-  boardElementOne.classList.toggle("active", currentBoard === boardOne);
-  boardElementTwo.classList.toggle("active", currentBoard === boardTwo);
+const createGameBoardGrid = (boardOne, boardTwo, hasGameStarted) => {
+  if (!hasGameStarted) {
+    boardElementOne.classList.add("active");
+    boardElementTwo.classList.add("active");
+  }
 
   boardElementOne.innerHTML = "";
   boardElementTwo.innerHTML = "";
@@ -51,6 +53,16 @@ const createGameBoardGrid = (boardOne, boardTwo, currentBoard) => {
     });
   });
   console.log(boardOne, boardTwo);
+};
+
+export const updateGrid = async (check) => {
+  if (check === 0) {
+    boardElementOne.classList.remove("active");
+    boardElementTwo.classList.add("active");
+  } else if (check === 1) {
+    boardElementTwo.classList.remove("active");
+    boardElementOne.classList.add("active");
+  }
 };
 
 export default createGameBoardGrid;
