@@ -97,4 +97,28 @@ export default class gameBoard {
       });
     });
   }
+
+  findShip(x, y) {
+    return this.ships.find((ship) => ship.id === this.board[x][y].id);
+  }
+
+  removeShip(x, y) {
+    const shipToRemove = this.findShip(x, y);
+
+    const index = this.ships.indexOf(shipToRemove);
+    if (index !== -1) {
+      this.ships.splice(index, 1);
+    }
+
+    // Remove instances of shipToRemove in board
+    this.board.forEach((row) => {
+      row.forEach((cell, index) => {
+        if (cell === shipToRemove) {
+          row[index] = 0;
+        }
+      });
+    });
+
+    return this.board;
+  }
 }

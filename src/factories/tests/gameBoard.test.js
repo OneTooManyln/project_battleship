@@ -149,4 +149,29 @@ describe("Gameboard", () => {
     gameBoard.recieveAttack(2, 2);
     expect(gameBoard.areAllSunk()).toEqual(false);
   });
+
+  test("finds ship given coordinates", () => {
+    gameBoard.placeShip(2, 2, 5, "vertical");
+    expect(gameBoard.findShip(2, 2)).toEqual({
+      hits: 0,
+      id: "ship_2_2",
+      length: 5,
+      status: false,
+    });
+  });
+  test("removes ship from board & ships", () => {
+    gameBoard.placeShip(2, 2, 5, "vertical");
+    expect(gameBoard.removeShip(2, 2)).toEqual([
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]);
+  });
 });
