@@ -18,4 +18,8 @@ export default class ship {
 
     return status;
   }
+
+  getLength() {
+    return this.length;
+  }
 }
