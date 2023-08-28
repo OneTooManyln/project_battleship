@@ -1,7 +1,8 @@
 export default class ship {
-  constructor(id, length) {
+  constructor(id, length, isVertical) {
     this.id = id;
     this.length = length;
+    this.isVertical = isVertical;
     this.hits = 0;
     this.status = false;
   }
