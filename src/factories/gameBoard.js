@@ -121,4 +121,12 @@ export default class gameBoard {
 
     return this.board;
   }
+
+  moveShip(x, y, a, b) {
+    const shipToMove = this.findShip(x, y);
+
+    this.removeShip(x, y);
+    this.placeShip(a, b, shipToMove.getLength(), shipToMove.isVertical);
+    return this.board;
+  }
 }
