@@ -12,33 +12,33 @@ export default class gameBoard {
     return this.board[x][y] === 0;
   }
 
-  placeShip(x, y, length, direction) {
-    if (direction === "vertical") {
+  placeShip(x, y, length, isVertical) {
+    if (isVertical) {
       if (x + length > this.board.length) {
         return false;
       }
-    } else if (direction === "horizontal") {
+    } else if (!isVertical) {
       if (y + length > this.board[0].length) {
         return false;
       }
     }
 
     for (let i = 0; i < length; i++) {
-      if (direction === "vertical") {
+      if (isVertical) {
         if (!this.isCellEmpty(x + i, y)) {
           return false;
         }
-      } else if (direction === "horizontal") {
+      } else if (!isVertical) {
         if (!this.isCellEmpty(x, y + i)) {
           return false;
         }
       }
     }
 
-    const newShip = new ship(`ship_${x}_${y}`, length);
+    const newShip = new ship(`ship_${x}_${y}`, length, isVertical);
 
     for (let i = 0; i < length; i++) {
-      if (direction === "vertical") {
+      if (newShip.isVertical === true) {
         this.board[x + i][y] = newShip;
       } else {
         this.board[x][y + i] = newShip;
@@ -57,7 +57,7 @@ export default class gameBoard {
       while (!isShipPlaced) {
         let xPlacement = Math.floor(Math.random() * 10);
         let yPlacement = Math.floor(Math.random() * 10);
-        let direction = Math.random() < 0.5 ? "vertical" : "horizontal";
+        let direction = Math.random() < 0.5 ? true : false;
 
         isShipPlaced = this.placeShip(
           xPlacement,

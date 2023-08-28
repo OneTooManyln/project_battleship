@@ -16,7 +16,7 @@ describe("Player", () => {
   });
 
   test("attacks enemy", () => {
-    enemyGameBoard.placeShip(2, 2, 5, "vertical");
+    enemyGameBoard.placeShip(2, 2, 5, true);
     expect(player.attackShip(2, 2, enemyGameBoard)).toEqual([
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -27,6 +27,7 @@ describe("Player", () => {
           {
             hits: 1,
             id: "ship_2_2",
+            isVertical: true,
             length: 5,
             status: false,
           },
@@ -46,6 +47,7 @@ describe("Player", () => {
         {
           hits: 1,
           id: "ship_2_2",
+          isVertical: true,
           length: 5,
           status: false,
         },
@@ -63,6 +65,7 @@ describe("Player", () => {
         {
           hits: 1,
           id: "ship_2_2",
+          isVertical: true,
           length: 5,
           status: false,
         },
@@ -80,6 +83,7 @@ describe("Player", () => {
         {
           hits: 1,
           id: "ship_2_2",
+          isVertical: true,
           length: 5,
           status: false,
         },
@@ -97,6 +101,7 @@ describe("Player", () => {
         {
           hits: 1,
           id: "ship_2_2",
+          isVertical: true,
           length: 5,
           status: false,
         },
