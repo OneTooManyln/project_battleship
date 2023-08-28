@@ -165,6 +165,7 @@ describe("Gameboard", () => {
       status: false,
     });
   });
+
   test("removes ship from board & ships", () => {
     gameBoard.placeShip(2, 2, 5, true);
     expect(gameBoard.removeShip(2, 2)).toEqual([
@@ -177,6 +178,107 @@ describe("Gameboard", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]);
+  });
+
+  test("moves ship to new location removing it from previous location", () => {
+    gameBoard.placeShip(2, 2, 5, true);
+    expect(gameBoard.moveShip(2, 2, 4, 4)).toEqual([
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [
+        0,
+        0,
+        0,
+        0,
+        {
+          hits: 0,
+          id: "ship_4_4",
+          isVertical: true,
+          length: 5,
+          status: false,
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        {
+          hits: 0,
+          id: "ship_4_4",
+          isVertical: true,
+          length: 5,
+          status: false,
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        {
+          hits: 0,
+          id: "ship_4_4",
+          isVertical: true,
+          length: 5,
+          status: false,
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        {
+          hits: 0,
+          id: "ship_4_4",
+          isVertical: true,
+          length: 5,
+          status: false,
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        {
+          hits: 0,
+          id: "ship_4_4",
+          isVertical: true,
+          length: 5,
+          status: false,
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]);
   });
