@@ -9,6 +9,7 @@ const game = () => {
   const computerGameBoard = new GameBoard();
   let hasGameStarted = false;
   let isGameOver = false;
+  let selectedShip = null;
 
   computerGameBoard.placeShipRandomly();
   playerGameBoard.placeShipRandomly();
@@ -19,24 +20,24 @@ const game = () => {
     hasGameStarted,
   );
 
-  const handleCellClick = async (coordinates) => {
-    const getCoordinates = (coordinates) => {
-      let iter = 0;
-      let xCoord;
-      let yCoord;
+  const getCoordinates = (coordinates) => {
+    let iter = 0;
+    let xCoord;
+    let yCoord;
 
-      for (const attr in coordinates) {
-        if (iter === 0) {
-          yCoord = coordinates[attr];
-          iter++;
-        } else if (iter === 1) {
-          xCoord = coordinates[attr];
-          iter++;
-        }
+    for (const attr in coordinates) {
+      if (iter === 0) {
+        yCoord = coordinates[attr];
+        iter++;
+      } else if (iter === 1) {
+        xCoord = coordinates[attr];
+        iter++;
       }
-      return { xCoord, yCoord };
-    };
+    }
+    return { xCoord, yCoord };
+  };
 
+  const handleCellClick = async (coordinates) => {
     const { xCoord, yCoord } = getCoordinates(coordinates);
 
     player.attackShip(xCoord, yCoord, computerGameBoard);
@@ -83,6 +84,32 @@ const game = () => {
         return;
       } else {
         handleCellClick(e.target.dataset);
+      }
+    } else if (e.target.closest("#board-1")) {
+      const clickedShip = e.target.closest(".ship");
+
+      if (clickedShip) {
+        const { xCoord, yCoord } = getCoordinates(clickedShip.dataset);
+        selectedShip = {
+          x: xCoord,
+          y: yCoord,
+        };
+      } else if (selectedShip) {
+        const { xCoord, yCoord } = getCoordinates(e.target.dataset);
+
+        playerGameBoard.moveShip(
+          selectedShip.x,
+          selectedShip.y,
+          parseInt(xCoord),
+          parseInt(yCoord),
+        );
+        selectedShip = null;
+
+        createGameBoardGrid(
+          playerGameBoard.board,
+          computerGameBoard.board,
+          hasGameStarted,
+        );
       }
     } else return;
   });
