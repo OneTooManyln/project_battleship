@@ -1,5 +1,6 @@
 const boardElementOne = document.querySelector("#board-1");
 const boardElementTwo = document.querySelector("#board-2");
+const titleDisplay = document.querySelector(".title");
 
 const createGameBoardGrid = (boardOne, boardTwo, hasGameStarted) => {
   if (!hasGameStarted) {
@@ -63,6 +64,11 @@ export const updateGrid = async (check) => {
     boardElementTwo.classList.remove("active");
     boardElementOne.classList.add("active");
   }
+};
+
+export const setDisplayTitle = (text) => {
+  titleDisplay.innerText = "";
+  titleDisplay.innerText = text;
 };
 
 export default createGameBoardGrid;

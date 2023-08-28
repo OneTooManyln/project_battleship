@@ -1,4 +1,4 @@
-import createGameBoardGrid, { updateGrid } from "./dom";
+import createGameBoardGrid, { setDisplayTitle, updateGrid } from "./dom";
 import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
 
@@ -42,38 +42,39 @@ const game = () => {
     player.attackShip(xCoord, yCoord, computerGameBoard);
     computerGameBoard.updateBoardsShips();
     updateGrid(1);
-    if (computerGameBoard.areAllSunk()) {
-      console.log("Player Wins!");
-      isGameOver = true;
-    }
-
     createGameBoardGrid(
       playerGameBoard.board,
       computerGameBoard.board,
       hasGameStarted,
     );
+    if (computerGameBoard.areAllSunk()) {
+      setDisplayTitle("Player Wins!");
+      isGameOver = true;
+      return;
+    } else setDisplayTitle("Computer's Turn");
 
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     computer.attackRandomly(playerGameBoard);
     playerGameBoard.updateBoardsShips();
     updateGrid(0);
-    if (playerGameBoard.areAllSunk()) {
-      console.log("Computer Wins!");
-      isGameOver = true;
-    }
-
     createGameBoardGrid(
       playerGameBoard.board,
       computerGameBoard.board,
       hasGameStarted,
     );
+    if (playerGameBoard.areAllSunk()) {
+      setDisplayTitle("Computer Wins!");
+      isGameOver = true;
+      return;
+    } else setDisplayTitle("Player's Turn");
   };
 
   document.addEventListener("click", (e) => {
     if (e.target.closest(".start-btn")) {
       hasGameStarted = true;
       updateGrid(0);
+      setDisplayTitle("Player's Turn");
       return;
     } else if (e.target.closest(".grid") && hasGameStarted) {
       const clickedBoard = e.target.closest(".board").id;
