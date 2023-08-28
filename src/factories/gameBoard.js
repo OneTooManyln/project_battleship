@@ -12,7 +12,7 @@ export default class gameBoard {
     return this.board[x][y] === 0;
   }
 
-  placeShip(x, y, length, isVertical) {
+  isPlacementPossible(x, y, length, isVertical) {
     if (isVertical) {
       if (x + length > this.board.length) {
         return false;
@@ -33,6 +33,14 @@ export default class gameBoard {
           return false;
         }
       }
+    }
+
+    return true;
+  }
+
+  placeShip(x, y, length, isVertical) {
+    if (!this.isPlacementPossible(x, y, length, isVertical)) {
+      return false;
     }
 
     const newShip = new ship(`ship_${x}_${y}`, length, isVertical);
