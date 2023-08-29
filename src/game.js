@@ -91,7 +91,11 @@ const game = () => {
       if (clickedBoard !== "board-2") {
         return;
       } else {
-        handleCellClick(e.target.dataset);
+        const { xCoord, yCoord } = getCoordinates(e.target.dataset);
+
+        if (player.isAttackValid(xCoord, yCoord, computerGameBoard)) {
+          handleCellClick(e.target.dataset);
+        } else console.log("invalid attack");
       }
     } else if (e.target.closest("#board-1")) {
       const clickedShip = e.target.closest(".ship");
