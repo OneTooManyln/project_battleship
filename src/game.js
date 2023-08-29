@@ -38,37 +38,45 @@ const game = () => {
   };
 
   const handleCellClick = async (coordinates) => {
-    const { xCoord, yCoord } = getCoordinates(coordinates);
+    const handlePlayerTurn = async () => {
+      const { xCoord, yCoord } = getCoordinates(coordinates);
 
-    player.attackShip(xCoord, yCoord, computerGameBoard);
-    computerGameBoard.updateBoardsShips();
-    updateGrid(1);
-    createGameBoardGrid(
-      playerGameBoard.board,
-      computerGameBoard.board,
-      hasGameStarted,
-    );
-    if (computerGameBoard.areAllSunk()) {
-      setDisplayTitle("Player Wins!");
-      isGameOver = true;
-      return;
-    } else setDisplayTitle("Computer's Turn");
+      player.attackShip(xCoord, yCoord, computerGameBoard);
+      computerGameBoard.updateBoardsShips();
+      updateGrid(1);
+      createGameBoardGrid(
+        playerGameBoard.board,
+        computerGameBoard.board,
+        hasGameStarted,
+      );
+      if (computerGameBoard.areAllSunk()) {
+        setDisplayTitle("Player Wins!");
+        isGameOver = true;
+        return;
+      } else setDisplayTitle("Computer's Turn");
+    };
+
+    handlePlayerTurn();
 
     await new Promise((resolve) => setTimeout(resolve, 800));
 
-    computer.attackRandomly(playerGameBoard);
-    playerGameBoard.updateBoardsShips();
-    updateGrid(0);
-    createGameBoardGrid(
-      playerGameBoard.board,
-      computerGameBoard.board,
-      hasGameStarted,
-    );
-    if (playerGameBoard.areAllSunk()) {
-      setDisplayTitle("Computer Wins!");
-      isGameOver = true;
-      return;
-    } else setDisplayTitle("Player's Turn");
+    const handleComputerTurn = () => {
+      computer.attackRandomly(playerGameBoard);
+      playerGameBoard.updateBoardsShips();
+      updateGrid(0);
+      createGameBoardGrid(
+        playerGameBoard.board,
+        computerGameBoard.board,
+        hasGameStarted,
+      );
+      if (playerGameBoard.areAllSunk()) {
+        setDisplayTitle("Computer Wins!");
+        isGameOver = true;
+        return;
+      } else setDisplayTitle("Player's Turn");
+    };
+
+    handleComputerTurn();
   };
 
   document.addEventListener("click", (e) => {
