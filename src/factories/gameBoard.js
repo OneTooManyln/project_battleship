@@ -132,6 +132,7 @@ export default class gameBoard {
 
   moveShip(x, y, a, b) {
     const shipToMove = this.findShip(x, y);
+    this.removeShip(x, y);
 
     if (
       !this.isPlacementPossible(
@@ -141,11 +142,11 @@ export default class gameBoard {
         shipToMove.isVertical,
       )
     ) {
+      this.placeShip(x, y, shipToMove.getLength(), shipToMove.isVertical);
       return;
+    } else {
+      this.placeShip(a, b, shipToMove.getLength(), shipToMove.isVertical);
     }
-
-    this.removeShip(x, y);
-    this.placeShip(a, b, shipToMove.getLength(), shipToMove.isVertical);
 
     return this.board;
   }
