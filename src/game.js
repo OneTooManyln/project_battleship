@@ -1,6 +1,7 @@
 import createGameBoardGrid, { setDisplayTitle, updateGrid } from "./dom";
 import GameBoard from "./factories/gameBoard";
 import Player from "./factories/player";
+import ship from "./factories/ship";
 
 const game = () => {
   const player = new Player("Player");
@@ -98,30 +99,33 @@ const game = () => {
         } else console.log("invalid attack");
       }
     } else if (e.target.closest("#board-1")) {
-      const clickedShip = e.target.closest(".ship");
+      const { xCoord, yCoord } = getCoordinates(e.target.dataset);
+      const clickedCell = playerGameBoard.board[xCoord][yCoord];
 
-      if (clickedShip) {
-        const { xCoord, yCoord } = getCoordinates(clickedShip.dataset);
-        selectedShip = {
-          x: xCoord,
-          y: yCoord,
-        };
-      } else if (selectedShip) {
+      if (selectedShip) {
+        console.log("selected ship");
         const { xCoord, yCoord } = getCoordinates(e.target.dataset);
-
         playerGameBoard.moveShip(
-          selectedShip.x,
-          selectedShip.y,
+          parseInt(selectedShip.x),
+          parseInt(selectedShip.y),
           parseInt(xCoord),
           parseInt(yCoord),
         );
-        selectedShip = null;
 
         createGameBoardGrid(
           playerGameBoard.board,
           computerGameBoard.board,
           hasGameStarted,
         );
+
+        selectedShip = null;
+      } else {
+        if (clickedCell instanceof ship) {
+          selectedShip = {
+            x: xCoord,
+            y: yCoord,
+          };
+        }
       }
     } else return;
   });
